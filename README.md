@@ -14,17 +14,19 @@ Certificate
 Create a new folder ("cert").
 > mkdir
 
-Gene
+Generate an RSA private key.
 > openssl genrsa -out private-key.pem 2048
 
-openssl req -new -x509 -days 365 \
+> openssl req -new -x509 -days 365 \
              -key private-key.pem \
              -config configuration.cnf \
              -out certificate.pem
 
-openssl pkcs12 -export -in certificate.pem -inkey private-key.pem -out pkcs.p12 -name cert -password pass:berlinwall42
+> openssl pkcs12 -export -in certificate.pem -inkey private-key.pem -out pkcs.p12 -name cert -password pass:password1
 
 
-keytool -deststorepass berlinwall42 -importkeystore -destkeypass berlinwall42 \
+> keytool -deststorepass password1 -importkeystore -destkeypass password1 \
   -destkeystore keystore.jks -srckeystore pkcs.p12 -srcstoretype \
-  PKCS12 -srcstorepass berlinwall42 -alias cert
+  PKCS12 -srcstorepass password1 -alias cert
+
+Put the keystore.jks into project root and set password in src/dist/config.yml
