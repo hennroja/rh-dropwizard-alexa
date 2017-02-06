@@ -1,24 +1,4 @@
 skillname: My Awesome Skill
-database:
-
-  driverClass: org.h2.Driver
-
-  user : sa
-  password: sa
-
-  url: jdbc:h2:./target/alexadb
-  maxWaitForConnection: 1s
-
-  properties:
-    charSet: UTF-8
-    hibernate.dialect: org.hibernate.dialect.H2Dialect
-    hibernate.hbm2ddl.auto: update
-    hibernate.format_sql: true
-    hibernate.temp.use_jdbc_metadata_defaults: false
-
-  validationQuery: "/* MyService Health Check */ SELECT 1"
-
-  checkConnectionWhileIdle: false
 
 server:
   rootPath: /

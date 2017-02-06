@@ -1,8 +1,6 @@
 package de.hennroja.alexaskill;
 
 import io.dropwizard.Application;
-import io.dropwizard.db.DataSourceFactory;
-import io.dropwizard.migrations.MigrationsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
@@ -23,12 +21,7 @@ public class AlexaApplication extends Application<AlexaConfiguration>
 	@Override
 	public void initialize(Bootstrap<AlexaConfiguration> bootstrap)
 	{
-        bootstrap.addBundle(new MigrationsBundle<AlexaConfiguration>() {
-            @Override
-            public DataSourceFactory getDataSourceFactory(AlexaConfiguration configuration) {
-                return configuration.getDataSourceFactory();
-            }
-        });
+
 	}
 
 	@Override

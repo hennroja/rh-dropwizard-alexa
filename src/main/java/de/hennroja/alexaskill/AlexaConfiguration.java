@@ -2,7 +2,6 @@ package de.hennroja.alexaskill;
 
 import io.dropwizard.Configuration;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.dropwizard.db.DataSourceFactory;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -14,23 +13,7 @@ public class AlexaConfiguration extends Configuration {
     @Valid
     @NotNull
     @JsonProperty
-    private DataSourceFactory database = new DataSourceFactory();
-
-    @Valid
-    @NotNull
-    @JsonProperty
     private String skillname;
-
-
-    @JsonProperty("database")
-    public DataSourceFactory getDataSourceFactory() {
-        return database;
-    }
-
-    @JsonProperty("database")
-    public void setDataSourceFactory(DataSourceFactory dataSourceFactory) {
-        this.database = dataSourceFactory;
-    }
 
     @JsonProperty("skillname")
     public String getSkillname() {

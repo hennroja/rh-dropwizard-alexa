@@ -65,13 +65,13 @@ task oneJar(type: OneJar) {
 
 // Configure the run task to start the Dropwizard service
 run {
-    args 'server', './src/dist/config/config.yml'
+    args 'server', './src/dist/config.yml'
     main = project.mainClassName
 }
 
 // TODO: make it work
 task(migrate) << {
-    args 'db', 'migrate', './src/dist/config/config.yml'
+    args 'db', 'migrate', './src/dist/config.yml'
     main = project.mainClassName
 }
 
