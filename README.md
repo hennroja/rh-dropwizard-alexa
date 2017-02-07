@@ -45,16 +45,16 @@ subjectAltName = @subject_alternate_names
 DNS.1 = home.dyndns.example.com
 ```
 
-> openssl req -new -x509 -days 365 \
-             -key private-key.pem \
-             -config configuration.cnf \
+> openssl req -new -x509 -days 365 
+             -key private-key.pem 
+             -config configuration.cnf 
              -out certificate.pem
 
 > openssl pkcs12 -export -in certificate.pem -inkey private-key.pem -out pkcs.p12 -name cert -password pass:password1
 
 
-> keytool -deststorepass password1 -importkeystore -destkeypass password1 \
-  -destkeystore keystore.jks -srckeystore pkcs.p12 -srcstoretype \
+> keytool -deststorepass password1 -importkeystore -destkeypass password1 
+  -destkeystore keystore.jks -srckeystore pkcs.p12 -srcstoretype 
   PKCS12 -srcstorepass password1 -alias cert
 
 Put the keystore.jks into project root and set password in src/dist/config.yml
