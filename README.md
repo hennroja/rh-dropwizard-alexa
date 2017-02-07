@@ -13,6 +13,7 @@ Certificate
 
 Create a new folder ("cert").
 > mkdir cert
+
 > cd cert
 
 Generate an RSA private key.
