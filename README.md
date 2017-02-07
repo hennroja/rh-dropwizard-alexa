@@ -12,7 +12,8 @@ Certificate
 -----------
 
 Create a new folder ("cert").
-> mkdir
+> mkdir cert
+> cd cert
 
 Generate an RSA private key.
 > openssl genrsa -out private-key.pem 2048
