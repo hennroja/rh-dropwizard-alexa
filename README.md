@@ -52,9 +52,21 @@ DNS.1 = home.dyndns.example.com
 
 > openssl pkcs12 -export -in certificate.pem -inkey private-key.pem -out pkcs.p12 -name cert -password pass:password1
 
+Generate the keystore with keytool:
 
 > keytool -deststorepass password1 -importkeystore -destkeypass password1 
   -destkeystore keystore.jks -srckeystore pkcs.p12 -srcstoretype 
   PKCS12 -srcstorepass password1 -alias cert
 
+
 Put the keystore.jks into project root and set password in src/dist/config.yml
+> cp keystore.jks ../
+
+> cd ..
+
+> nano src/dist/config.yml
+
+Run the application
+> gradle run
+
+Test the server by calling: [https://0.0.0.0:8443/](https://0.0.0.0:8443/)
