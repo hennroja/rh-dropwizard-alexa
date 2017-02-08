@@ -8,8 +8,8 @@ To test your application with the Alexa test environment provided by devlopers.a
 need a ssl certificate, portforwarding from you router to your machine (443 --> 8443) and optionally a dyndns.
 
 
-Certificate
------------
+Create Certificate
+------------------
 
 Create a new folder ("cert").
 > mkdir cert
@@ -66,7 +66,14 @@ Put the keystore.jks into project root and set password in src/dist/config.yml
 
 > nano src/dist/config.yml
 
+
 Run the application
+-------------------
+
+Run the application
+> ./gradlew run
+
+or if you have gradle installed
 > gradle run
 
 Test the server by calling: [https://0.0.0.0:8443/](https://0.0.0.0:8443/)
