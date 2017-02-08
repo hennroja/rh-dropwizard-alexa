@@ -4,6 +4,7 @@ apply plugin: 'application'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 
+// AWS only supports Java 8
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 
