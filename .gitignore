@@ -17,6 +17,9 @@
 .idea/sqlDataSources.xml
 .idea/dynamic.xml
 .idea/uiDesigner.xml
+.idea/encodings.xml
+.idea/compiler.xml
+.idea/vcs.xml
 
 # Gradle:
 .idea/gradle.xml
@@ -48,10 +51,10 @@ fabric.properties
 ### Intellij Patch ###
 # Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
 
-# *.iml
-# modules.xml
-# .idea/misc.xml
-# *.ipr
+*.iml
+modules.xml
+.idea/misc.xml
+*.ipr
 
 ### Java ###
 *.class
