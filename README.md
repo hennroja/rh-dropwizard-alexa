@@ -44,6 +44,7 @@ subjectAltName = @subject_alternate_names
 [subject_alternate_names]
 DNS.1 = home.dyndns.example.com
 ```
+In the config file nothing is really important, beside the DNS.
 
 > openssl req -new -x509 -days 365 
              -key private-key.pem 
@@ -66,6 +67,9 @@ Put the keystore.jks into project root and set password in src/dist/config.yml
 
 > nano src/dist/config.yml
 
+Now go pack to the "cert" folder and copy the content of your certificate.pem.
+Now go to developer.amazon.com and open you skill. On the left side click "SSL Certificate".
+Select "I will upload a self-signed certificate in X.509 format." and paste it in the field below.
 
 Run the application locally
 ---------------------------
