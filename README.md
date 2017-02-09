@@ -60,15 +60,16 @@ Generate the keystore with keytool:
 
 
 Put the keystore.jks into project root and set password in src/dist/config.yml
-> cp keystore.jks ../
+> cp keystore.jks ../dropwizard/
 
-> cd ..
+> cd ../dropwizard/
 
 > nano src/dist/config.yml
 
 
-Run the application
--------------------
+Run the application locally
+---------------------------
+Go to the project root directory
 
 Run the application
 > ./gradlew run
@@ -77,3 +78,29 @@ or if you have gradle installed
 > gradle run
 
 Test the server by calling: [https://0.0.0.0:8443/](https://0.0.0.0:8443/)
+
+If you set up the dyndns and the port-forwarding correctly, you should be able to see incoming requests in the console.
+
+For development IntelliJ IDEA is recommended.
+
+
+Publish as Lambda function
+--------------------------
+
+Deploying your code to AWS Lambda has many advantages (no server maintenance, costs, etc.). The gradle tasks "shadowJar" will create a JAR including all dependencies that you specified in the alexa project.
+The settings for the AWS Lambda service are:
+```
+Runtime: Java 8
+Handler: de.hennroja.alexaskill.Handler
+```
+
+Generate the jar by calling
+> ./gradlew shadowJar
+
+Find the jar file in
+> alexa/build/libs/
+
+Now simply upload the jar and trigger a last test.
+
+Keep in mind that you have to change the endpoint address from HTTPS + your dyndns to the lambda function.
+Alternatively you can create a new skill and copy intent schema + utterances.

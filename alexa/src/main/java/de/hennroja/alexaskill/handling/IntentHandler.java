@@ -4,7 +4,7 @@ import com.amazon.speech.slu.Intent;
 import com.amazon.speech.speechlet.SpeechletResponse;
 import com.amazon.speech.ui.PlainTextOutputSpeech;
 import com.amazon.speech.ui.SimpleCard;
-import de.hennroja.alexaskill.AlexaConfiguration;
+import de.hennroja.alexaskill.AlexaSpeechlet;
 
 /**
  * Created by robinhenniges on 01.02.17.
@@ -16,7 +16,7 @@ public abstract class IntentHandler {
 
     static public SpeechletResponse buildCardSpeechletResponse(final String output, final boolean shouldEndSession) {
         SimpleCard card = new SimpleCard();
-        card.setTitle(AlexaConfiguration.SKILLNAME);
+        card.setTitle(AlexaSpeechlet.SKILLNAME);
         card.setContent(String.format("%s", output));
 
         // Create the plain text output.

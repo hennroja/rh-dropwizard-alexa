@@ -1,6 +1,5 @@
 package de.hennroja.alexaskill.handling;
 
-
 import com.amazon.speech.slu.Intent;
 import com.amazon.speech.slu.Slot;
 import com.amazon.speech.speechlet.SpeechletResponse;

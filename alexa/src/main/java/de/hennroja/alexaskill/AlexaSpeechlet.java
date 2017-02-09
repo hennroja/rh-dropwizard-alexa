@@ -3,6 +3,7 @@ package de.hennroja.alexaskill;
 import com.amazon.speech.json.SpeechletRequestEnvelope;
 import com.amazon.speech.slu.Intent;
 import com.amazon.speech.speechlet.*;
+import com.amazon.speech.speechlet.lambda.SpeechletRequestStreamHandler;
 import de.hennroja.alexaskill.handling.DefaultIntent;
 import de.hennroja.alexaskill.handling.IntentHandler;
 import org.slf4j.Logger;
@@ -16,15 +17,15 @@ import java.util.Set;
  */
 public class AlexaSpeechlet implements SpeechletV2 {
 
+    public static final String SKILLNAME = "My SkillName";
+
     private final static Logger logger = LoggerFactory.getLogger(AlexaSpeechlet.class);
-    private final AlexaConfiguration configuration;
 
     private Set<IntentHandler> intentHandlers = new HashSet<>();
 
-    public AlexaSpeechlet(AlexaConfiguration configuration) {
-        this.configuration = configuration;
-    }
 
+    public AlexaSpeechlet() {
+    }
 
     @Override
     public void onSessionStarted(SpeechletRequestEnvelope<SessionStartedRequest> requestEnvelope) {
