@@ -1,9 +1,6 @@
-package de.hennroja.alexaskill.resources;
+package de.hennroja.alexaskill;
 
-import com.amazon.speech.speechlet.Speechlet;
 import com.amazon.speech.speechlet.servlet.SpeechletServlet;
-import com.codahale.metrics.annotation.Timed;
-import de.hennroja.alexaskill.AlexaSpeechlet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,15 +29,18 @@ public class AlexaResource extends SpeechletServlet {
     @Context
     HttpServletResponse servletResponse;
 
-    public AlexaResource(AlexaSpeechlet speechlet) {
-        setSpeechlet(speechlet);
+    public AlexaResource() {
+        setSpeechlet(new AlexaSpeechlet());
     }
 
+    /**
+     * Response when method is GET on a request on this endpoint.
+     * @param name
+     * @return
+     */
     @GET
-    @Timed
     public Response getCall(String name) {
         logger.debug("GET call");
-
         return Response.ok("hello world!").build();
     }
 

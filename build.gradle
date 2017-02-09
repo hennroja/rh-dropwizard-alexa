@@ -1,89 +1,20 @@
-apply plugin: 'java'
-apply plugin: 'gradle-one-jar'
-apply plugin: 'application'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
+subprojects {
+    apply plugin: 'java'
 
-// AWS only supports Java 8
-sourceCompatibility = '1.8'
-targetCompatibility = '1.8'
-
-project.ext {
-    dropwizardVersion = '1.0.6'
-}
-
-// UTF-8 should be standard by now. So use it!
-[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
-
-buildscript {
     repositories {
         mavenCentral()
     }
 
-    dependencies {
-        classpath 'com.github.rholder:gradle-one-jar:1.0.4'
-    }
+    // UTF-8 should be standard by now. So use it!
+    [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 }
 
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    compile (
-       'io.dropwizard:dropwizard-core:' + dropwizardVersion,
-       'io.dropwizard:dropwizard-auth:' + dropwizardVersion,
-       'io.dropwizard:dropwizard-http2:'+ dropwizardVersion,
-       'io.dropwizard:dropwizard-jetty:'+ dropwizardVersion,
-       'com.h2database:h2:1.4.191',
-       'com.amazon.alexa:alexa-skills-kit:1.2',
-       'org.eclipse.jetty.alpn:alpn-api:1.1.3.v20160715',
-       'org.mortbay.jetty.alpn:alpn-boot:8.1.11.v20170118'
-    )
-}
-
-configurations.all {
-    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-        if (details.requested.name == 'log4j') {
-            details.useTarget "org.slf4j:log4j-over-slf4j:1.7.5"
-        }
-    }
-    exclude group: 'javax.inject', module: 'javax.inject'
-    exclude module: 'slf4j-log4j12'
-}
+//project(':alexa') {
+//    apply plugin: 'java'
+//
+//    repositories {
+//        mavenCentral()
+//    }
+//}
 
 
-startScripts {
-    mainClassName = project.mainClassName
-}
-
-task oneJar(type: OneJar) {
-    mainClass = project.mainClassName
-    useStable = false
-    archiveName = 'lets-encyrpt.jar'
-
-}
-
-// Configure the run task to start the Dropwizard service
-run {
-    args 'server', './src/dist/config.yml'
-    main = project.mainClassName
-}
-
-// TODO: make it work
-task(migrate) << {
-    args 'db', 'migrate', './src/dist/config.yml'
-    main = project.mainClassName
-}
-
-
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.4'
-}
-
-artifacts {
-    archives oneJar
-}
-
-build.dependsOn 'oneJar'

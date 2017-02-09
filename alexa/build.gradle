@@ -1,0 +1,14 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '1.2.4'
+}
+
+dependencies {
+    compile 'com.amazon.alexa:alexa-skills-kit:1.2'
+    compile 'javax.ws.rs:javax.ws.rs-api:2.0.1'
+}
+
+shadowJar {
+    baseName = 'my-skill'
+    classifier = 'fat'
+    version = 1.0
+}

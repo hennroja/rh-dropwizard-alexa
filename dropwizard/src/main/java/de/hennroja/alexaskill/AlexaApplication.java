@@ -4,8 +4,6 @@ import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
-import de.hennroja.alexaskill.resources.AlexaResource;
-
 /**
  * Created by hennroja on 20/03/16.
  */
@@ -29,9 +27,8 @@ public class AlexaApplication extends Application<AlexaConfiguration>
 	{
 		environment.jersey().setUrlPattern("/*");
 
-        AlexaSpeechlet alexaSpeechlet = new AlexaSpeechlet(configuration);
 
-		final AlexaResource resource = new AlexaResource(alexaSpeechlet);
+		final AlexaResource resource = new AlexaResource();
 		environment.jersey().register(resource);
 	}
 
