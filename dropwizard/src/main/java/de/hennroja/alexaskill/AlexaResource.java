@@ -33,6 +33,11 @@ public class AlexaResource extends SpeechletServlet {
         setSpeechlet(new AlexaSpeechlet());
     }
 
+    /**
+     * Response when method is GET on a request on this endpoint.
+     * @param name
+     * @return
+     */
     @GET
     public Response getCall(String name) {
         logger.debug("GET call");

@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * This is the entry point of the lambda function.
  * Created by robinhenniges on 09.02.17.
  */
 public class Handler extends SpeechletRequestStreamHandler {
